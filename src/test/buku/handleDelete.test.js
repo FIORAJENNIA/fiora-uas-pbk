@@ -19,7 +19,7 @@ describe('deleteBuku', () => {
 
     await store.deleteBuku(1)
 
-    expect(axios.delete).toHaveBeenCalledWith('http://localhost:3000/buku/1')
+    expect(axios.delete).toHaveBeenCalledWith('https://pollen-bejewled-armadillo.glitch.me/buku/1')
     expect(store.getBuku).toHaveBeenCalled()
   })
 
