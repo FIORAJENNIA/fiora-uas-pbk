@@ -16,7 +16,7 @@ export const useBukuStore = defineStore('buku', {
     actions: {
         async getBuku() {
             try {
-                const res = await axios.get('https://pollen-bejewled-armadillo.glitch.me/buku')
+                const res = await axios.get('https://server-fiora.vercel.app/buku')
                 this.buku = res.data
             } catch (error) {
                 console.error("Gagal Fetch Data", error)
@@ -37,7 +37,7 @@ export const useBukuStore = defineStore('buku', {
                     ...buku
                 }
 
-                const res = await axios.post('https://pollen-bejewled-armadillo.glitch.me/buku', newBuku)
+                const res = await axios.post('https://server-fiora.vercel.app/buku', newBuku)
                 this.buku.push(res.data)
 
             } catch (error) {
@@ -46,7 +46,7 @@ export const useBukuStore = defineStore('buku', {
         },
         async updateBuku(id, updatedBuku) {
             try {
-                await axios.put(`https://pollen-bejewled-armadillo.glitch.me/buku/${id}`, updatedBuku)
+                await axios.put(`https://server-fiora.vercel.app/buku/${id}`, updatedBuku)
                 const index = this.buku.findIndex(item => item.id === id)
                 if (index !== -1) {
                     this.buku[index] = { id, ...updatedBuku }  
@@ -57,7 +57,7 @@ export const useBukuStore = defineStore('buku', {
         },
         async deleteBuku(id){
             try {
-                await axios.delete(`https://pollen-bejewled-armadillo.glitch.me/buku/${id}`)
+                await axios.delete(`https://server-fiora.vercel.app/buku/${id}`)
                 console.log("berhasil delete")
                 this.getBuku()
             } catch (error) {
